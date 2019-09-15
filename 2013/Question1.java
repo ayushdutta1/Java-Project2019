@@ -8,5 +8,44 @@ To verify an ISBN, calculate 10 times the ﬁrst digit, plus 9 times the second 
 we add 1 time the last digit. If the ﬁnal number leaves no remainder when divided by 11, the code is a valid ISBN.
 */
 
+import java.util.*;
+public class ISBN
+{
+    public static void main()
+    {
+        Scanner in=new Scanner(System.in);
+        String s;
+        int sum=0,l,i;
+        char c;
+        System.out.println("Enter the ISBN Number : ");
+        s=in.nextLine();
+        l=s.length();
+        if(l==10)
+        {
+            for(i=10;i>=1;i--)
+            {
+                c=s.charAt(10-i);
+                if((c=='x')||(c=='X'))
+                {
+                    sum=sum+(10*i);
+                }
+                else
+                {
+                    sum=sum+(Integer.parseInt(c+"")*i);
+                }
+            }
+            System.out.println("SUM = "+sum);
+            if(sum%11==0)
+            System.out.println("LEAVES NO REMAINDER - VALID ISBN CODE");
+            else
+            System.out.println("LEAVES REMAINDER - INVALID ISBN CODE");
+        }
+        else
+        {
+            System.out.println("INVALID INPUT");
+        }
+    }
+}
+
 
 
